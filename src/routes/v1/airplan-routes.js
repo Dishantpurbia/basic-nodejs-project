@@ -12,5 +12,7 @@ router.post(`/`
 
 router.get(`/`,Airplancontroller.getairplanes);
 
+router.get(`/:id`,Airplancontroller.getairplane);
+
 
 module.exports = router;

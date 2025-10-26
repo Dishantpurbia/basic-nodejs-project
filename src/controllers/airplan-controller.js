@@ -32,9 +32,24 @@ async function getairplanes(req,res) {
         return res.status(error.statusCode)
         .json(errorresponse);
     }
+};
+
+async function getairplane(req,res) {
+    try {
+        const airplans = await Airplansservice.getairplane(req.params.id);
+        successresponse.data = airplans;
+        return res.status(StatusCodes.OK)
+        .json(successresponse)
+    } catch (error) {
+        errorresponse.error = error;
+        return res.status(error.statusCode)
+        .json(errorresponse);
+    }
+    
 }
 
 module.exports = {
     createAirplan,
-    getairplanes
+    getairplanes,
+    getairplane
 };

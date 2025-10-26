@@ -32,7 +32,18 @@ async function getairplanes() {
     }
 }
 
+async function getairplane(id) {
+    try {
+        const airplanes = await airplanrespository.get(id);
+        return airplanes;
+    } catch (error) {
+        throw new apperror(`cannot fetch data of the airplan`, StatusCodes.INTERNAL_SERVER_ERROR);
+    }
+    
+}
+
 module.exports = { 
     createAirplan,
-    getairplanes
+    getairplanes,
+    getairplane
 }
