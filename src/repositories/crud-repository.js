@@ -1,5 +1,7 @@
 const { where } = require("sequelize");
 const { logger } = require("../config");
+const apperror = require("../utils/errors/app-error");
+const { StatusCodes } = require("http-status-codes");
 
 class crudrepository {
     constructor(model){
@@ -14,17 +16,23 @@ class crudrepository {
     
 
     async destroy(data) {
-      const response = await this.model.delete({
+      const response = await this.model.destroy({
          where:{
              id: data
            }
        });
+       if(!response){
+        throw new apperror(`not ble to find the resource`,StatusCodes.NOT_FOUND);
+       }
         return response;
      }
     
 
     async get(data) {
         const response = await this.model.findByPk(data);
+        if(!response){
+            throw  new apperror(`not able to found the resource`,StatusCodes.NOT_FOUND);
+        }
         return response;
      } 
 

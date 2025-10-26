@@ -45,11 +45,25 @@ async function getairplane(req,res) {
         return res.status(error.statusCode)
         .json(errorresponse);
     }
+}
+
+async function deleteairplane(req,res) {
+    try {
+        const deletedairplane = await Airplansservice.deleteairplane(req.params.id);
+        successresponse.data = deletedairplane;
+        return res.status(StatusCodes.OK)
+        .json(successresponse)
+    } catch (error) {
+        errorresponse.error = error;
+        res.status(error.statusCode)
+        .json(errorresponse);
+    }
     
 }
 
 module.exports = {
     createAirplan,
     getairplanes,
-    getairplane
+    getairplane,
+    deleteairplane
 };

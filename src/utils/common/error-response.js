@@ -1,6 +1,6 @@
 const error = {
     success: false,
-    message: `Something went wrong while creaing airplane`,
+    message: `Something went wrong`,
     data: {},
     error: {}
 }
