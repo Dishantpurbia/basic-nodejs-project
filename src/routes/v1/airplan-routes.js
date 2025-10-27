@@ -16,5 +16,7 @@ router.get(`/:id`,Airplancontroller.getairplane);
 
 router.delete(`/:id`,Airplancontroller.deleteairplane);
 
+router.patch(`/:id`,Airplancontroller.updateairplan);
+
 
 module.exports = router;

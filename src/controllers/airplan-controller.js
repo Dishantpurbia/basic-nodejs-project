@@ -57,13 +57,27 @@ async function deleteairplane(req,res) {
         errorresponse.error = error;
         res.status(error.statusCode)
         .json(errorresponse);
-    }
-    
+    }    
 }
 
+async function updateairplan(req,res) {
+    try {
+        const updatedairplane = await Airplansservice.updateairplan(req.params.id,{
+            capacity: req.body.capacity
+        })
+        successresponse.data = updatedairplane;
+        return res.status(StatusCodes.OK)
+        .json(successresponse);
+    } catch (error) {
+        errorresponse.error = error;
+        res.status(error.statusCode)
+        .json(errorresponse);
+    }
+}
 module.exports = {
     createAirplan,
     getairplanes,
     getairplane,
-    deleteairplane
+    deleteairplane,
+    updateairplan
 };

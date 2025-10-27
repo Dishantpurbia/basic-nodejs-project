@@ -53,6 +53,18 @@ async function deleteairplane(id) {
             throw new apperror(`the airplane you requested is not present`,error.statusCode);
         }
         throw new apperror(`cant delete the airplane`,StatusCodes.INTERNAL_SERVER_ERROR);
+    } 
+}
+
+async function updateairplan(id,data) {
+    try {
+        const updatedairplane = await airplanrespository.update(id,data);
+        return updatedairplane;
+    } catch (error) {
+        if(error.statusCode == StatusCodes.NOT_FOUND){
+            throw new apperror(`the airplan you requested is not present`,error.statusCode);
+        }
+        throw new apperror(`cant update airplane`,StatusCodes.INTERNAL_SERVER_ERROR);
     }
     
 }
@@ -61,5 +73,6 @@ module.exports = {
     createAirplan,
     getairplanes,
     getairplane,
-    deleteairplane
+    deleteairplane,
+    updateairplan
 }
