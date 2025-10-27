@@ -3,7 +3,7 @@ const {StatusCodes } = require(`http-status-codes`)
 
 const {successresponse,errorresponse } = require(`../utils/common`);
 
-async function creatcity(req,res) {
+async function createcity(req,res) {
     try {
         const newcity = await Citservice.createCity({
             name: req.body.name 
@@ -19,5 +19,5 @@ async function creatcity(req,res) {
 }
 
 module.exports = {
-    creatcity
+    createcity
 }
