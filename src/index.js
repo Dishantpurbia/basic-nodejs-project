@@ -11,19 +11,6 @@ app.use(express.urlencoded({extended:true}));
 
 app.use(`/api`, apiroutes);
 
-app.listen(serveronfig.PORT, async () => {
+app.listen(serveronfig.PORT, () => {
     console.log(`successfully started the server on port : ${serveronfig.PORT}`);
-    const {City ,Airport } = require(`./models`);
-    const pune = await City.findByPk(1);
-    console.log(pune);
-    //const airport = await Airport.create({name: `kempegowds`, code: `kpd`,cityId: 1});
-    //const rana = await pune.createAirport({ name: `surendra`, code: `ddr`,cityId: 4});
-    //console.log(rana);
-    //const airportinp = await pune.getAirports();
-    //console.log(airportinp);
-    await City.destroy({
-        where:{
-            id: 1
-        }
-    })
 });
