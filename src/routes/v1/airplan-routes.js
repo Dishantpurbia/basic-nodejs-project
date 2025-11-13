@@ -12,7 +12,7 @@ router.post(`/`
 
 router.get(`/`,Airplancontroller.getairplanes);
 
-router.get(`/:id`,Airplancontroller.getairplane);
+router.get(`/:id`,Airplancontroller.getairplanes);
 
 router.delete(`/:id`,Airplancontroller.deleteairplane);
 
