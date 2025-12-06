@@ -25,6 +25,20 @@ async function createflight(req,res) {
     }
 };
 
+async function getallflight(req,res) {
+    try {
+        const filterflight = await flightservice.getallflight(req.query);
+        successresponse.data = filterflight;
+        return res.status(StatusCodes.OK)
+        .json(successresponse);
+    } catch (error) {
+        errorresponse.error = error;
+        return res.status(error.statusCode || StatusCodes.INTERNAL_SERVER_ERROR)
+        .json(errorresponse);
+    }
+};
+
 module.exports = {
-    createflight
+    createflight,
+    getallflight
 }

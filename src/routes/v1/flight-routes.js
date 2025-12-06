@@ -10,4 +10,6 @@ router.post(`/`,
     ,datecheckmiddlerware.comparetime
     ,flightcontroller.createflight);
 
+router.get ("/",flightcontroller.getallflight);
+
 module.exports = router;
